@@ -2,7 +2,9 @@ import React from 'react';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner.jsx';
 
 import './ContentCard.scss';
-const imgPath = '../../../assets/img/';
+const WatchimgPath = '../../../assets/img/';
+const imgPath = './../static/assets/img/';
+
 const ContentCard = ({data}) => {
   
     if(!data) {
@@ -12,7 +14,7 @@ const ContentCard = ({data}) => {
       return (
         <div className="content-card" key={id}>
           <div className="content-card__preview">
-            <img src={`${imgPath}joker-preview.jpg`} alt={title + "-preview"}/>
+            <img src={url} alt={title + "-preview"}/>
           </div>
           <div className="content-card__body">
             <div className="content-card__title">

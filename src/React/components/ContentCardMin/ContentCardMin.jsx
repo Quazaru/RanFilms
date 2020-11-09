@@ -1,12 +1,13 @@
 import React from 'react';
 import './ContentCardMin.scss';
-const imgPath = '../../../assets/img/';
+const WatchimgPath = '../../../assets/img/';
+const imgPath = './../static/assets/img/';
 const ContentCardMin = ({data}) => {
   const {title, url } = data;
   return (
     <div className="content-card_min">
       <div className="content-card_min__preview">
-        <img src={`${imgPath}joker-preview.jpg`} alt={title + "-preview"}/>
+        <img src={url} alt={title + "-preview"}/>
       </div>
       <div className="content-card_min__title">
         <p>{title}</p>

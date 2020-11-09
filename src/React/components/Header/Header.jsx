@@ -2,12 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Header.scss';
 
+const WatchimgPath = '../../../assets/img/';
+const imgPath = './../static/assets/img/';
+
 const Header = (props) => {
   return (
     <header className="header">
       <nav className="container">
       <div className="logo">
-            <img src="../../../assets/img/icons/logo.svg" alt=""/>
+            <img src={`${imgPath}icons/logo.svg`}alt=""/>
           </div>
         <ul>
           <li>
