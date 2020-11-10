@@ -32,9 +32,10 @@ module.exports = {
     react: ['@babel/polyfill', './React/script'],
   },
   output: {
-
     path: path.resolve(__dirname, 'dist'),
     filename: 'static/js/[name].js',
+    //     filename: 'static/js/[name].js'     - build,
+    //     filename: '[name].js'     - watch,
   },
   optimization: optimize(),
 
@@ -85,7 +86,7 @@ module.exports = {
         test: /\.(png|svg|jpg|jpeg|gif)$/,
         loader: 'file-loader',
         options: {
-          outputPath: 'static/img',
+          outputPath: 'static/img', // outputPath: 'static/img',
         },
       },
       {
@@ -116,16 +117,22 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './pug/pages/index.pug',
       filename: 'templates/index.html',
+       // filename: 'templates/index.html', - build
+        // filename: 'index.html', - watch
       chunks: ["react", "index"]
     }),
 
     new CleanWebpackPlugin(),
     new CopyWebpackPlugin([
       { from: 'assets/**/*', to: 'static/' },
+      // { from: 'assets/**/*', to: 'static/' }, - build
+      // { from: 'assets/**/*', to: ' ' }, - watch
     ]),
     new MiniCssExtractPlugin({
       exclude: '/\.map$/',
-      filename: 'static/[name].css',
+      filename: 'static/[name].css'
+      // filename: 'static/[name].css' - build,
+      // filename: '[name].css',  - watch
     }),
   ],
   resolve: {

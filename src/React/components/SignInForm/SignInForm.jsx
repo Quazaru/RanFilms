@@ -4,18 +4,18 @@ import './SignInForm.scss';
 
 const SignInForm = (props) => {
   return (
-    <div className="sign-form">
+    <form className="sign-form" id='signin-form'>
       <div className="sign-form__title">
         Вход
       </div>
       <div className="sign-form__body">
       <div className="sign-form__input">
         <p>E-mail</p>
-        <input type="text" placeholder="E-mail"/>
+        <input id="sign-form__email" name="email" type="text" placeholder="E-mail" maxLength="24"/>
       </div>
       <div className="sign-form__input">
         <p>Пароль</p>
-        <input type="text" placeholder="Пароль"/>
+        <input name="password" type="text" placeholder="Пароль" maxLength="24"/>
       </div>
       </div>
       <div className="sign-form__btn">
@@ -23,7 +23,7 @@ const SignInForm = (props) => {
           Войти
         </div>
       </div>
-    </div>
+    </form>
   )
 }
 

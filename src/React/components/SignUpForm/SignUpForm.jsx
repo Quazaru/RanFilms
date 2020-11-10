@@ -3,26 +3,26 @@ import './SignUpForm.scss';
 
 const SignUpForm = (props) => {
   return (
-    <div className="sign-form">
+    <form className="sign-form" id='signup-form'>
       <div className="sign-form__title">
         Регистрация
       </div>
       <div className="sign-form__body">
       <div className="sign-form__input">
         <p>Имя</p>
-        <input type="text" placeholder="Имя"/>
+        <input name="login" type="text" placeholder="Имя"/>
       </div>
       <div className="sign-form__input">
         <p>E-mail</p>
-        <input type="text" placeholder="E-mail"/>
+        <input  id="sign-form__email" name="email" type="text" placeholder="E-mail"/>
       </div>
       <div className="sign-form__input">
         <p>Пароль</p>
-        <input type="text" placeholder="Пароль"/>
+        <input name="password" type="text" placeholder="Пароль"/>
       </div>
       <div className="sign-form__input">
         <p>Подтвердите пароль</p>
-        <input type="text" placeholder="Пароль"/>
+        <input name="password" type="text" placeholder="Пароль"/>
       </div>
       </div>
       <div className="sign-form__btn">
@@ -30,7 +30,7 @@ const SignUpForm = (props) => {
           Зарегистрироваться
         </div>
       </div>
-    </div>
+    </form>
   )
 }
 
