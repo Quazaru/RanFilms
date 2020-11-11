@@ -28,7 +28,6 @@ const formValidator = ({
         item.classList.remove('icorrect-input');
         if(item.value.indexOf('@') == -1) {
           item.classList.add('icorrect-input');
-          console.log( item);
           isValide = false;
         }
       })

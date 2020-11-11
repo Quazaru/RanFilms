@@ -17,7 +17,7 @@ const AuthPage = (props) => {
     emailSelector: '#sign-form__email',
   }
 })
-  postDataForm('#signin-form', '.sign-form__btn')
+  postDataForm('#signup-form', '.sign-form__btn')
 }, 300);
     setTimeout(() => {
   formValidator({

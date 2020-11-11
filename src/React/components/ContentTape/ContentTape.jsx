@@ -9,7 +9,6 @@ import './ContentTape.scss';
 
 const ContentTapeContainer = ({data, mode = "full"}) => {
   
-  console.log(mode);
   return (
     <ContentTape content={data} mode={mode}/>
   )
@@ -27,7 +26,6 @@ const ContentTape = (props) => {
         )
 
       });
-      console.log(contentCards);
     } else {
       contentCards = content.map((item) => {
         return (
