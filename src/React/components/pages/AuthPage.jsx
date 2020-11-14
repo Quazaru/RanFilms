@@ -1,36 +1,15 @@
 import React, {useEffect} from 'react';
 import SignUpForm from '../SignUpForm/SignUpForm.jsx';
 import SignInForm from '../SignInForm/SignInForm.jsx';
-import formValidator from '../../../js/formValidator';
-import postDataForm from '../../../js/postDataForm';
+import bindAuthFormActions from '../../../js/bindAuthFormActions.js';
 import './styles/AuthPage.scss';
 
 const AuthPage = (props) => {
   useEffect(() => {
     setTimeout(() => {
-  formValidator({
-  formSelector: '#signup-form',
-  triggerSelector: '.sign-form__btn',
-  minLength: 3,
-  maxLength: 32,
-  settings: {
-    emailSelector: '#sign-form__email',
-  }
-})
-  postDataForm('#signup-form', '.sign-form__btn')
-}, 300);
-    setTimeout(() => {
-  formValidator({
-  formSelector: '#signin-form',
-  triggerSelector: '.sign-form__btn',
-  minLength: 3,
-  maxLength: 32,
-  settings: {
-    emailSelector: '#sign-form__email',
-  }
-})
-  postDataForm('#signin-form', '.sign-form__btn')
-}, 300);
+      bindAuthFormActions('#signup-form', '.sign-form__btn');
+      bindAuthFormActions('#signin-form', '.sign-form__btn');
+    }, 300);
   }, [ ]);
   return (
     <div className="auth-page">

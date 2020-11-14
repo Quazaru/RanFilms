@@ -1,12 +1,13 @@
-import contentDataReducer from './modules/contentDataReducer';
+import contentDataReducer from './modules/contentMovieReducer';
 import userReducer from './modules/userReducer';
 
 
 const mainReducer = (store, action) => {
   return {
     ...store,
+    testMode: true,
     user: userReducer(store, action),
-    contentData: contentDataReducer(store, action),
+    movies: contentMovieReducer(store, action),
   }
 }
 

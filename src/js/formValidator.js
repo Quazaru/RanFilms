@@ -1,19 +1,18 @@
+
 const formValidator = ({
   formSelector,
-  triggerSelector,
   minLength = 3,
   maxLength = 25,
   settings: {
-    signupPasswordSelector = null,
+    identicalInputsSelector = null,
     emailSelector = null,
   }
 }) => {
   const form = document.querySelector(formSelector);
   const inputList = form.querySelectorAll('input');
-  const trigger = form.querySelector(triggerSelector);
+  let isValide = true;
 
-  trigger.addEventListener('click', () => {
-    let isValide = true;
+    
     inputList.forEach((item) => {
       item.classList.remove('icorrect-input');
       if (item.value.length < minLength || item.value.length > maxLength ) {
@@ -33,12 +32,22 @@ const formValidator = ({
       })
     }
 
+    if(identicalInputsSelector) {
+      const identicalInputs = form.querySelectorAll(identicalInputsSelector);
+      const expectedValue = identicalInputs[0].value;
+      identicalInputs.forEach((item) => {
+        if (item.value !== expectedValue) {
+          isValide = false;
+        }
+      })
+    }
+
     if (isValide) {
       inputList.forEach((item) => {
         item.classList.remove('icorrect-input');
       })
     }
-  })
+  return isValide;
 }
 
 export default formValidator;

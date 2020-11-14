@@ -10,19 +10,19 @@ const SignUpForm = (props) => {
       <div className="sign-form__body">
       <div className="sign-form__input">
         <p>Имя</p>
-        <input name="login" type="text" placeholder="Имя"/>
+        <input name="name" type="text" placeholder="Имя"/>
       </div>
       <div className="sign-form__input">
         <p>E-mail</p>
-        <input  id="sign-form__email" name="email" type="text" placeholder="E-mail"/>
+        <input  id="email-input" name="email" type="text" placeholder="E-mail"/>
       </div>
       <div className="sign-form__input">
         <p>Пароль</p>
-        <input name="password" type="text" placeholder="Пароль"/>
+        <input id="password-input_confirm"  name="password" type="text" placeholder="Пароль"/>
       </div>
       <div className="sign-form__input">
         <p>Подтвердите пароль</p>
-        <input name="password" type="text" placeholder="Пароль"/>
+        <input id="password-input_confirm" name="password" type="text" placeholder="Пароль"/>
       </div>
       </div>
       <div className="sign-form__btn">

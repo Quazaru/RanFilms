@@ -21,3 +21,19 @@
     background-color: $main-emphasis;
   }
 }
+
+@media screen and (max-width: 770px) {
+  .auth-page {
+    &__forms {
+      flex-direction: column-reverse;
+    }
+    &__divider {
+      width: 50%;
+      height: 3px;
+      margin: 20px 0;
+    }
+  }
+  .sign-form {
+    width: 290px;
+  }
+}

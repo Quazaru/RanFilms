@@ -33,7 +33,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'static/js/[name].js',
+    filename: isDev ? '[name].js' : 'static/js/[name].js',
     //     filename: 'static/js/[name].js'     - build,
     //     filename: '[name].js'     - watch,
   },
@@ -116,23 +116,22 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './pug/pages/index.pug',
-      filename: 'templates/index.html',
+      filename: isDev ? 'index.html': 'templates/index.html',
        // filename: 'templates/index.html', - build
         // filename: 'index.html', - watch
       chunks: ["react", "index"]
     }),
 
     new CleanWebpackPlugin(),
-    new CopyWebpackPlugin([
-      { from: 'assets/**/*', to: 'static/' },
-      // { from: 'assets/**/*', to: 'static/' }, - build
-      // { from: 'assets/**/*', to: ' ' }, - watch
-    ]),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: 'assets/**/*', to: isDev ? '' : 'static/' },
+      ]
+    }),
     new MiniCssExtractPlugin({
       exclude: '/\.map$/',
-      filename: 'static/[name].css'
-      // filename: 'static/[name].css' - build,
-      // filename: '[name].css',  - watch
+      filename: isDev ? '[name].css' : 'static/[name].css'
+
     }),
   ],
   resolve: {
