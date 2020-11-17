@@ -1,4 +1,4 @@
-import contentDataReducer from './modules/contentMovieReducer';
+import contentMovieReducer from './modules/contentMovieReducer';
 import userReducer from './modules/userReducer';
 
 

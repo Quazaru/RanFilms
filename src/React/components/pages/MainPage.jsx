@@ -3,7 +3,8 @@ import withContentDataService from '../../HOC/withContentDataService.jsx';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner.jsx';
 
 import ContentTape from '../ContentTape/ContentTape.jsx';
-
+import {connect} from 'react-redux';
+import actions from '../../redux/actionCreators/actions';
 
 const MainPage = ({service}) => {
   const [data, setData] = useState(null);
@@ -24,4 +25,21 @@ const MainPage = ({service}) => {
   }
 }
 
-export default withContentDataService()(MainPage);
+const mapStateToProps = (state) => {
+  console.log('====================================');
+  console.log(state.data);
+  console.log('====================================');
+  return {
+    data: state.movies.data,
+    isLoadiing: state.movies.isLoading,
+    error: state.movies.error,
+  }
+}
+
+const mapDispatchToProps = (dispatch, prevState) => {
+  return {
+    fetchMovies: actions.fetchMovies(dispatch, ),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps )(withContentDataService()(MainPage));

@@ -1,28 +1,28 @@
 const actions = {
-  fetchMoviesRequest = () => {
+  fetchMoviesRequest: () => {
     return {
       type: 'FETCH_MOVIES_REQUEST',
     }
   },
-  fetchMoviesError = (data) => {
+  fetchMoviesError: (data) => {
     return {
       type: 'FETCH_MOVIES_ERROR',
       payload: data,
     }
   },
-  fetchMoviesSuccess = (data) => {
+  fetchMoviesSuccess: (data) => {
     return {
       type: 'FETCH_MOVIES_SUCCESS',
       payload: data,
     }
   },
-  fetchMovies = (dispatch, fetchService) => () => {
-    fetchMoviesRequest();
+  fetchMovies: (dispatch, fetchService) => () => {
+    dispatch(fetchMoviesRequest());
     fetchService()
       .then(res => {
-        fetchMoviesSuccess(res);
+        dispatch(fetchMoviesSuccess(res));
       })
-      .catch(err => fetchMoviesError('Failed to get data. :('))
+      .catch(err => dispatch(fetchMoviesError('Failed to get data. :(')))
   }
   
 }

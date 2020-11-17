@@ -1,25 +1,31 @@
-const contentMovieReducer = (store, action) => {
+const contentMovieReducer = (state, action) => {
   switch (action.type) {
     case 'FETCH_MOVIES_REQUEST' :
       return {
-        ...store.movies,
+        ...state.movies,
         isLoading: true,
         error: null,
         data: [],
       }
     case 'FETCH_MOVIES_ERROR' : 
       return {
-        ...store.movies,
+        ...state.movies,
         isLoading: false,
         error: action.payload,
         data: [],
       }
     case 'FETCH_MOVIES_SUCCESS' : 
       return {
-        ...store.movies,
+        ...state.movies,
         isLoading: false, 
-        error: false,
+        error: null,
         data: action.payload,
+      }
+    default : 
+      return {
+        isLoading: true,
+        error: null,
+        data: [],
       }
   }
 }

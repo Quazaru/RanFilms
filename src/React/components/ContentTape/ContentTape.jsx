@@ -5,7 +5,10 @@ import LoadingSpinner from '../LoadingSpinner/LoadingSpinner.jsx';
 import ContentCard from '../ContentCard/ContentCard.jsx';
 import ContentCardMin from '../ContentCardMin/ContentCardMin.jsx';
 
+
+
 import './ContentTape.scss';
+import store from '../../redux/script.js';
 
 const ContentTapeContainer = ({data, mode = "full"}) => {
   
@@ -15,7 +18,7 @@ const ContentTapeContainer = ({data, mode = "full"}) => {
 }
 
 const ContentTape = (props) => {
-  const {content, mode} = props;
+  const {content, mode, data} = props;
   if(content) {
     let contentCards = null;
     if(mode == "full") {
@@ -46,5 +49,6 @@ const ContentTape = (props) => {
     )
   }
 }
+
 
 export default withContentDataService()(ContentTapeContainer);

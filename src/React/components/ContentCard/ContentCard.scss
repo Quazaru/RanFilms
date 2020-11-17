@@ -84,4 +84,16 @@
     align-items: center;
     justify-content: center;
   }
+  &__genres {
+    
+    font-size: 12px;
+    p {
+      color: $main-white;
+      display: -webkit-box;
+      overflow: hidden;
+      -webkit-line-clamp: 1;
+      margin: 0 30px;
+      -webkit-box-orient: horizontal;
+    }
+  }
 }
