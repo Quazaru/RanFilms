@@ -53,22 +53,45 @@ def login():
 
 @app.route('/posts', methods=['POST', "GET"])
 def print_posts(): 
-    films = []
-    film = db.session.query(Movies).all()
-    number = 0
-    film = list(film)
-    for elem in film: 
-        number += 1
-        elem = str(elem)
-        elem = elem.split("\n")
-        films.append(
-            {        
-            "id": 1,
-            "title": elem[0],
-            "url": number,
-            "description": elem[1], 
-            "year": elem[2]
-                }
-            )
+    argument = request.args.get('id')
 
-    return json.dumps(films)
+    if argument is None: 
+
+        films = []
+        film = db.session.query(Movies).all()
+        number = 0
+        film = list(film)
+        for elem in film: 
+            number += 1
+            elem = str(elem)
+            elem = elem.split("\n")
+            film = (
+                {        
+                "id": number,
+                "title": elem[0],
+                "url": number,
+                "description": elem[1], 
+                "year": elem[2]
+                    }
+                )
+            films.append(film)
+
+        return json.dumps(films, ensure_ascii=False, indent=2, sort_keys=True).encode('utf8')
+
+    else: 
+        film = db.session.query(Movies).filter(Movies.id == argument).all()
+        film = list(film)
+        for elem in film: 
+            elem = str(elem)
+            elem = elem.split("\n")
+            film = (
+                {        
+                "id": argument,
+                "title": elem[0],
+                "url": argument,
+                "description": elem[1], 
+                "year": elem[2]
+                    }
+                )
+            return json.dumps(film, ensure_ascii=False).encode('utf8')
+        
