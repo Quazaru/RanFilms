@@ -1,8 +1,6 @@
 import React from 'react';
-
-const imgPath = './../static/assets/img/';
-const watchImgPath = "../../../assets/img/";
-
+import variables from '../../../js/_variables';
+const {imgPath} = variables;  
 const LoadingSpinner = () => {
   return (
       <div className="loading-spinner">

@@ -6,15 +6,15 @@ import ContentTape from '../ContentTape/ContentTape.jsx';
 import {connect} from 'react-redux';
 import actions from '../../redux/actionCreators/actions';
 
-const MainPage = ({service}) => {
-  const [data, setData] = useState(null);
+const MainPage = (props) => {
+  const {fetchMovies, data, isLoading, error} = props;
   useEffect(() => {
-  service.getData().then(res => {
-    setData(res);
-  });
-  }, [ ])
-
-  if(!data) {
+    fetchMovies();
+  }, [ ]);
+  if(error) {
+    throw new Error(error);
+  }
+  if(isLoading) {
     return (
       <LoadingSpinner />
     )
@@ -26,20 +26,19 @@ const MainPage = ({service}) => {
 }
 
 const mapStateToProps = (state) => {
-  console.log('====================================');
-  console.log(state.data);
-  console.log('====================================');
+  const {data, isLoading, error} = state.movies;
+
   return {
-    data: state.movies.data,
-    isLoadiing: state.movies.isLoading,
-    error: state.movies.error,
+    data, isLoading, error,
   }
 }
 
-const mapDispatchToProps = (dispatch, prevState) => {
+const mapDispatchToProps = (dispatch, {service}) => {
+  
+
   return {
-    fetchMovies: actions.fetchMovies(dispatch, ),
+    fetchMovies: actions.fetchMovies(dispatch, service.getData),
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps )(withContentDataService()(MainPage));
+export default withContentDataService()(connect(mapStateToProps, mapDispatchToProps)(MainPage));

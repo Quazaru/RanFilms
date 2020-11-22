@@ -17,12 +17,13 @@ const actions = {
     }
   },
   fetchMovies: (dispatch, fetchService) => () => {
-    dispatch(fetchMoviesRequest());
+    
+    dispatch(actions.fetchMoviesRequest());
     fetchService()
       .then(res => {
-        dispatch(fetchMoviesSuccess(res));
+        dispatch(actions.fetchMoviesSuccess(res));
       })
-      .catch(err => dispatch(fetchMoviesError('Failed to get data. :(')))
+      .catch(err => actions.fetchMoviesError('Failed to get data'));
   }
   
 }
