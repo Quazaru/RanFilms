@@ -1,7 +1,14 @@
 import formValidator from './formValidator';
 import postFormData from './postFormData';
 
-const bindAuthFormActions = (formSelector, triggerSelector, customValidatorSettings = null) => {
+const bindAuthFormActions = (
+  {
+    formSelector,
+    triggerSelector,
+    customValidatorSettings = null,
+    onSuccessValidation
+  }
+   ) => {
   const form = document.querySelector(formSelector);
   const trigger = form.querySelector(triggerSelector);
   const validatorSettings = {
@@ -17,12 +24,14 @@ const bindAuthFormActions = (formSelector, triggerSelector, customValidatorSetti
     }
     trigger.addEventListener('click', () => {
       const isValide = formValidator(validatorSettings)
-      if (isValide) {
+      if (isValide) { 
         postFormData(formSelector)
+          .then(res => res.json())
+          .then(serverResponse => onSuccessValidation(serverResponse));
       }
       
     })
-    
+
 
 }
 

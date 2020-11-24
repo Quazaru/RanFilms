@@ -1,6 +1,7 @@
 const initialState =  {
   username: '',
-  favoritesList: [],
+  id: -1,
+  isLogin: false,
 }
 
 const userReducer = (store, action) => {
@@ -9,8 +10,12 @@ const userReducer = (store, action) => {
       return {
         username: action.payload.username,
         id: action.payload.id,
-
+        isLogin: action.payload.isLogin,
       }
+      case 'USER_LOGOUT': 
+        return {
+          ...initialState,
+        }
     default : 
      return initialState;
   }

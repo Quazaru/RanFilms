@@ -1,5 +1,5 @@
-// const WatchingPath = '../../../assets/img/';
-// const imgPath = './../static/assets/img/';
+//  WatchingPath = '../../../assets/img/'
+//  BuildPath = './../static/assets/img/'
 const variables = {
   imgPath: '../../../assets/img/',
 }
