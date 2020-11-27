@@ -75,11 +75,13 @@
       color: #fff;
       width: 100%;
       position: absolute;
-      bottom: -100%;
+      bottom: -110%;
       transform: scale(0);
-      transition: .1s ease-in-out all;
+      
+      transition: .2s ease-in-out all;
+      transition-delay: .5s;
+      z-index: 20;
       &:hover {
-        transition: .05s ease-in-out all;
         transform: scale(1);
       }
       ul {
@@ -88,6 +90,19 @@
         list-style-type: none;
         padding: 0;
         box-shadow: 0 0  10px rgba(0, 0, 0, 0.322);
+
+        &::after {
+          content: '';
+          z-index: -10;
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 10px;
+          width: 25px;
+          height: 25px;
+          transform: rotate(45deg);
+          background-color: lighten($color: $main-black, $amount: 20%);
+        }
         li {
           cursor: pointer;
           padding: 5px;
@@ -100,14 +115,17 @@
     &__menu-trigger{
       cursor: pointer;
       display: inline-block;
+      padding: 0 8px;
       &:hover + .profile-plate__menu {
-      transform: scale(1);
+        transition: .1s ease-in-out;
+        transform: scale(1);
       }
       &:hover {
         color: lighten($color: $main-emphasis, $amount: 20%);
       }
     }
     &__username {
+      cursor: pointer;
       display: inline-block;
       margin-right: 5px;
     }

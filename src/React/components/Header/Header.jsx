@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import userActions from '../../redux/reducers/modules/userReducer';
+import userActions from '../../redux/actionCreators/userActions';
 import './Header.scss';
 import variables from '../../../js/_variables';
 const {imgPath} = variables;
@@ -23,7 +23,9 @@ const Header = (props) => {
       <div className="profile-plate__menu">
         <ul>
           <li>Профиль</li>
-          <li>Выйти</li>
+          <li onClick={() => {
+            logOut()
+          }}>Выйти</li>
         </ul>
       </div>
     </div>
@@ -32,9 +34,11 @@ const Header = (props) => {
   return (
     <header className="header">
       <nav className="container">
-      <div className="logo">
-            <img src={`${imgPath}icons/logo.svg`} alt="logo"/>
-          </div>
+      <Link to="/">
+        <div className="logo">
+              <img src={`${imgPath}icons/logo.svg`} alt="logo"/>
+        </div>
+      </Link>
         <ul className="header__links">
           <li className="nav-link">
             <Link to="/" >Главная</Link>
@@ -61,7 +65,7 @@ const mapStateToProps = ({user}) => {
 
 const mapDispatchToProps = (dispatch, prevState) => {
   return {
-    logOut: userActions.logOut,
+    logOut: () => dispatch(userActions.logOut()),
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

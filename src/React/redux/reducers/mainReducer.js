@@ -2,12 +2,12 @@ import contentMovieReducer from './modules/contentMovieReducer';
 import userReducer from './modules/userReducer';
 
 
-const mainReducer = (store, action) => {
+const mainReducer = (state, action) => {
   return {
-    ...store,
+    ...state,
     testMode: true,
-    user: userReducer(store, action),
-    movies: contentMovieReducer(store, action),
+    user: userReducer(state, action),
+    movies: contentMovieReducer(state, action),
   }
 }
 

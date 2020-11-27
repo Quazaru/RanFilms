@@ -7,7 +7,7 @@ const ContentCardMin = ({data}) => {
   return (
     <div className="content-card_min">
       <div className="content-card_min__preview">
-      <img src={`${imgPath}previews/${url}.png`} alt={title + "-preview"}/>
+      <img src={`${imgPath}previews/${url}.png`} srcSet={"../../../assets/img/previews/no-image.svg"} alt={title + "-preview"}/>
       </div>
       <div className="content-card_min__title">
         <p>{title}</p>

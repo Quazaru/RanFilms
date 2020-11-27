@@ -1,3 +1,9 @@
+const initialState = {
+  isLoading: true,
+  error: null,
+  data: [],
+}
+
 const contentMovieReducer = (state, action) => {
   switch (action.type) {
     case 'FETCH_MOVIES_REQUEST' :
@@ -22,11 +28,8 @@ const contentMovieReducer = (state, action) => {
         data: action.payload,
       }
     default : 
-      return {
-        isLoading: true,
-        error: null,
-        data: [],
-      }
+    console.log(state);
+    return state ? state.movies : initialState;
   }
 }
 
