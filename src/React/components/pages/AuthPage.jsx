@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import SignUpForm from '../SignUpForm/SignUpForm.jsx';
 import SignInForm from '../SignInForm/SignInForm.jsx';
-import bindAuthFormActions from '../../../js/bindAuthFormActions.js';
+import bindAuthFormActions from '../../../js/formHandlers/bindAuthFormActions.js';
 import './styles/AuthPage.scss';
 import userActions from '../../redux/actionCreators/userActions';
 
@@ -15,6 +15,13 @@ const AuthPage = (props) => {
         {
           formSelector: '#signup-form',
           triggerSelector: '.sign-form__btn',
+          customSettings: {
+ 
+            identicalInputsSelector: '#password-input_confirm',
+            customValidator: (response) => {
+              return true;
+            },
+          },
           onSuccessValidation: (response) => {
             history.replace('/');
             updateUser({
@@ -28,11 +35,14 @@ const AuthPage = (props) => {
         {
           formSelector: '#signin-form',
           triggerSelector: '.sign-form__btn',
+          customSettings:   {
+            customValidator: () => true,
+          },
           onSuccessValidation: (response) => {
             history.replace('/');
             updateUser({
               username: response.email,
-              id: response.id
+              id: response.id 
             });
           }
         });
@@ -51,7 +61,6 @@ const AuthPage = (props) => {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state.user.username);
   return {
     userLogin: state.user.username,
   }

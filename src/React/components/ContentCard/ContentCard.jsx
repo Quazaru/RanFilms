@@ -14,7 +14,7 @@ const ContentCard = ({data}) => {
       return (
         <div className="content-card" key={id}>
           <div className="content-card__preview">
-            <img src={`${imgPath}previews/${url}.png`} srcSet={"../../../assets/img/previews/no-image.svg"} alt={title + "-preview"}/>
+            <img src={`${imgPath}previews/${url}.png`} srcSet={`${imgPath}previews/no-image.svg`} alt={title + "-preview"}/>
           </div>
           <div className="content-card__body">
             <div className="content-card__header">

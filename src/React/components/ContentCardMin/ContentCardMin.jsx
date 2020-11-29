@@ -7,7 +7,7 @@ const ContentCardMin = ({data}) => {
   return (
     <div className="content-card_min">
       <div className="content-card_min__preview">
-      <img src={`${imgPath}previews/${url}.png`} srcSet={"../../../assets/img/previews/no-image.svg"} alt={title + "-preview"}/>
+      <img src={`${imgPath}previews/${url}.png`} srcSet={`${imgPath}previews/no-image.svg`} alt={title + "-preview"}/>
       </div>
       <div className="content-card_min__title">
         <p>{title}</p>
@@ -15,7 +15,7 @@ const ContentCardMin = ({data}) => {
       <ul className="content-card_min__btns">
         <li>
           <div className="content-card_min__settings-btn">
-            <img src={`${imgPath}icons/delete.svg`} alt=""/>
+            <img src={`${imgPath}icons/delete.svg`} alt="img-delete"/>
           </div>
         </li>
       </ul>

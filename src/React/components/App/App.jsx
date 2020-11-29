@@ -9,10 +9,10 @@ const App = (props) => {
   return (
     <ErrorBoundary >
       <div className="container">
-        <Route exact path="/" component={MainPage}/>
+        <Route exact path="/р" component={MainPage}/>
         <Route exact path="/random" component={GeneratorPage}/>
         <Route exact path="/favorite" component={FavoritesPage}/>
-        <Route exact path="/auth" component={AuthPage}/>
+        <Route exact path="/" component={AuthPage}/>
       </div>
     </ErrorBoundary>
   )

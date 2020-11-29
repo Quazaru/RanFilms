@@ -28,7 +28,6 @@ const contentMovieReducer = (state, action) => {
         data: action.payload,
       }
     default : 
-    console.log(state);
     return state ? state.movies : initialState;
   }
 }

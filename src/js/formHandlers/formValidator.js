@@ -1,9 +1,10 @@
-
 const formValidator = ({
   formSelector,
   minLength = 3,
   maxLength = 25,
+
   settings: {
+    customValidator = null,
     identicalInputsSelector = null,
     emailSelector = null,
   }
@@ -41,11 +42,13 @@ const formValidator = ({
         }
       })
     }
-
     if (isValide) {
       inputList.forEach((item) => {
         item.classList.remove('icorrect-input');
       })
+    }
+    if(customValidator && !customValidator()) {
+      isValide = false;
     }
   return isValide;
 }

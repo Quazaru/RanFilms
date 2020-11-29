@@ -1,17 +1,17 @@
 import formValidator from './formValidator';
-import postFormData from './postFormData';
+import postFormData from '../postFormData';
 
 const bindAuthFormActions = (
   {
     formSelector,
     triggerSelector,
-    customValidatorSettings = null,
+    customSettings = null,
     onSuccessValidation
   }
    ) => {
   const form = document.querySelector(formSelector);
   const trigger = form.querySelector(triggerSelector);
-  const validatorSettings = {
+  let validatorSettings = {
       formSelector: formSelector,
       minLength: 3,
       maxLength: 32,
@@ -19,15 +19,19 @@ const bindAuthFormActions = (
         emailSelector: '#email-input',
       }
     }
-    if (customValidatorSettings) {
-      Object.assign(validatorSettings, customValidatorSettings)
+    if (customSettings) {
+      customSettings.settings = Object.assign(validatorSettings.settings, customSettings)
     }
     trigger.addEventListener('click', () => {
       const isValide = formValidator(validatorSettings)
       if (isValide) { 
         postFormData(formSelector)
           .then(res => res.json())
-          .then(serverResponse => onSuccessValidation(serverResponse));
+          .then(serverResponse => {
+            if(customSettings && customSettings.customValidator(serverResponse)) {
+              onSuccessValidation(serverResponse);
+            }
+          });
       }
       
     })
