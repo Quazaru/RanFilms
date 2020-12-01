@@ -1,0 +1,45 @@
+@import '../../../assets/css/variables.scss';
+
+#toast {
+  
+}
+.toast {
+  max-width: 300px;
+  margin: 0 auto;
+  color: $main-white;
+  font-size: 14px;
+  font-weight: bold;
+  background-color: lighten($color: $main-black, $amount: 25%);
+  border: 2px solid lighten($color: $main-black, $amount: 20%);
+  text-align: center;
+  padding: 10px;
+  border-radius: 5px;
+  display: block;
+  opacity: 1;
+  &_visible {
+    position: fixed;
+    z-index: 1000000000000000 !important;
+    display: block;
+    transform: translateX(-50%) translateY(-50%);
+  }
+  &_center {
+    top: 50%;
+    left: 50%;
+  }
+  &_left-bottom {
+    left: 5px;
+    bottom: 5px;
+  }
+  &_right-bottom {
+    right: 5px;
+    bottom: 5px;
+  }
+  &_left-top {
+    left: 5px;
+    top: 5px;
+  }
+  &_right-top {
+    right: 5px;
+    top: 5px;
+  }
+}
